@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pessoa</title>
+</head>
+<body>
+    <h1>Cadastro de Pessoa</h1>
+
+    <form th:action="@{/pessoas/salvar}" th:object="${pessoa}" method="post">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" th:field="*{nome}" id="nome" />
+        </div>
+        <br />
+
+        <div>
+            <label for="idade">Idade:</label>
+            <input type="number" th:field="*{idade}" id="idade" />
+        </div>
+        <br />
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" th:field="*{email}" id="email" />
+        </div>
+        <br />
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <br />
+    <a th:href="@{/pessoas/listar}">Ver lista de pessoas</a>
+</body>
+</html>
