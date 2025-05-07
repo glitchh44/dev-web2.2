@@ -8,8 +8,8 @@ import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name = "pessoas")
-public class Pessoa {
-
+public class Pessoa{
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,7 +19,7 @@ public class Pessoa {
 
     public Pessoa() {}
 
-    public Pessoa(String nome, Integer idade) {
+    public Pessoa(String nome, Integer idade){
         this.nome = nome;
         this.idade = idade;
     }
@@ -28,23 +28,19 @@ public class Pessoa {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIdade(Integer idade) {
+        this.idade = idade;
     }
 
     public Integer getIdade() {
         return idade;
-    }
-
-    public void setIdade(Integer idade) {
-        this.idade = idade;
     }
 }
