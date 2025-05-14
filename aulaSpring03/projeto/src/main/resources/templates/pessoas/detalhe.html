@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Pessoas</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Detalhes das Pessoas</title>
 </head>
-
 <body>
-
     <div th:replace="fragments/navbar :: navbar"></div>
 
     <main class="main-content">
-        <h1>Lista de Pessoas</h1>
-
+        <h1>Detalhes</h1>
         
         <table border="1">
             <thead>
@@ -22,25 +18,24 @@
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Idade</th>
-                    <th>açoes</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="pessoa: ${lista}">
-                    <td th:text="${pessoa.id}"></td>
-                    <td th:text="${pessoa.nome}"></td>
-                    <td th:text="${pessoa.idade}"></td>
-                    <td>
-                        <a th:href="@{/pessoas/{id}(id=${pessoa.id})}" class="botao">Detalhes</a>
-                    </td>
+                <tr>
+                    <td th:text="${pessoa.id}">1</td>
+                    <td th:text="${pessoa.nome}">Nome</td>
+                    <td th:text="${pessoa.idade}">30</td>
                 </tr>
-            </body>
+            </tbody>
         </table>
 
+        <form th:action="@{/pessoas/{id}/excluir(id=${pessoa.id})}" method="post">
+            <button type="submit" class="botao">Excluir</button>
+        </form>
     </main>
+
     <footer>
         <p>2025 Meu app</p>
     </footer>
 </body>
-
 </html>
