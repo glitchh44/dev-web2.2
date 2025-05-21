@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Carros</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <main class="main-content">
+        <h1>Lista de Carros</h1>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Ano</th>
+                    <th>Valor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="carro : ${carros}">
+                    <td th:text="${carro.id}"></td>
+                    <td th:text="${carro.modelo}"></td>
+                    <td th:text="${carro.marca}"></td>
+                    <td th:text="${carro.ano}"></td>
+                    <td th:text="${carro.valor}"></td>
+                    <td>
+                        <a th:href="@{/carros/editar/{id}(id=${carro.id})}" class="botao">Editar</a>
+                        <a th:href="@{/carros/deletar/{id}(id=${carro.id})}" class="botao" onclick="return confirm('Deseja excluir este carro?');">Excluir</a>
+                        <a th:href="@{/carros/{id}(id=${carro.id})}" class="botao">Detalhes</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+    <footer>
+        <p>2025 Meu app</p>
+    </footer>
+</body>
+
+</html>

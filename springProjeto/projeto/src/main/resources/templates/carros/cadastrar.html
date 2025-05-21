@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Cadastrar Carro</title>
+</head>
+
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <main class="main-content">
+
+        <h1>Cadastrar Carro</h1>
+        <form th:action="@{/carros/salvar}" th:object="${carro}" method="post">
+            <div>
+                <label>Modelo:</label>
+                <input type="text" th:field="*{modelo}" placeholder="Modelo do Carro" />
+                <div th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}"></div>
+            </div>
+
+            <div>
+                <label>Marca:</label>
+                <input type="text" th:field="*{marca}" placeholder="Marca do Carro" />
+                <div th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></div>
+            </div>
+
+            <div>
+                <label>Ano:</label>
+                <input type="number" th:field="*{ano}" placeholder="Ex: 2022" />
+                <div th:if="${#fields.hasErrors('ano')}" th:errors="*{ano}"></div>
+            </div>
+
+            <div>
+                <label>Valor:</label>
+                <input type="number" step="0.01" th:field="*{valor}" placeholder="0.00" />
+                <div th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}"></div>
+            </div>
+
+            <button type="submit" class="botao">Salvar</button>
+        </form>
+
+    </main>
+
+    <footer>
+        <p>2025 Meu app</p>
+    </footer>
+</body>
+</html>

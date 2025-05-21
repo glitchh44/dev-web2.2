@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Detalhes do Carro</title>
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <main class="main-content">
+        <h1>Detalhes do Carro</h1>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Ano</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${carro.id}">1</td>
+                    <td th:text="${carro.modelo}">Modelo</td>
+                    <td th:text="${carro.marca}">Marca</td>
+                    <td th:text="${carro.ano}">2025</td>
+                    <td th:text="${carro.valor}">99000.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form th:action="@{/carros/deletar/{id}(id=${carro.id})}" method="get" onsubmit="return confirm('Deseja excluir este carro?');">
+            <button type="submit" class="botao">Excluir</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>2025 Meu app</p>
+    </footer>
+</body>
+</html>

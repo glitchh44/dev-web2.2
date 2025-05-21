@@ -1,0 +1,3 @@
+### Listar todos os veículos
+GET http://localhost:8080/api/veiculos
+Accept: application/json
